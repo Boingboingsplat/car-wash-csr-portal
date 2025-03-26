@@ -1,26 +1,28 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-accent: oklch(0.514 0.222 16.935);
+  --color-content-fg: black;
+  --color-content-bg: white;
+  --color-lighter-bg: oklch(0.869 0.005 56.366);
+  --color-darker-bg: oklch(0.709 0.01 56.259);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Used for slanted element containing logo */
+@utility slanted-bottom-* {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 calc(--value(integer) * 1%)
+  );
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility slanted-right-* {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    calc(--value(integer) * 1%) 100%,
+    0 100%
+  );
 }
