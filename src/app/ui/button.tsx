@@ -21,7 +21,7 @@ export default function Button({
     return (
         <Link
         href={href}
-        className="flex w-max h-max p-2 gap-2 items-center rounded-lg bg-lighter-bg text-content-fg hover:bg-accent hover:text-white"
+        className="flex w-max h-max p-2 gap-2 items-center rounded-lg font-bold bg-lighter-bg text-content-fg hover:bg-accent hover:text-white"
       >
         { Icon ? <Icon className="h-5" /> : null }
         { label ? <span>{label}</span> : null }

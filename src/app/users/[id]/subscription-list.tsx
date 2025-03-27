@@ -1,3 +1,4 @@
+import { fetchUserSubscriptions } from "@/app/lib/data";
 import Button from "@/app/ui/button";
 
 export default async function VehicleList({
@@ -5,22 +6,18 @@ export default async function VehicleList({
 }: {
   userId: string,
 }) {
-  // TODO: query database for subscriptions
-  const subscriptions = [
-    { "id": "1", "status": "active", "mmy": "Ford Focus 2010", "license": "ABA1023" },
-    { "id": "2", "status": "overdue", "mmy": "Ford Focus 2011", "license": "DYR4862" },
-    { "id": "3", "status": "overdue", "mmy": "Ford Focus 2012", "license": "MOF6811" },
-  ];
+  const subscriptions = await fetchUserSubscriptions(userId);
 
+  // TODO: Special formatting for no subscriptions
   return (
     <table className="w-full border-spacing-10">
       <thead className="font-bold">
-        <tr>
-          <td scope="col">Status</td>
-          <td scope="col">Make / Model / Year</td>
-          <td scope="col">Liscense Plate</td>
-          <td scope="col">Edit</td>
-          <td scope="col">Delete</td>
+        <tr className="text-left">
+          <th scope="col">Status</th>
+          <th scope="col">Make / Model</th>
+          <th scope="col">License Plate</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +35,7 @@ export default async function VehicleList({
               className="h-12 border-b border-b-darker-bg last-of-type:border-none"
             >
               <td>{statusCard}</td>
-              <td>{subscription.mmy}</td>
+              <td>{subscription.make_model}</td>
               <td>{subscription.license}</td>
               <td><Button iconType="edit" label="" href={`vehicle/${subscription.id}/edit`}/></td>
               <td><Button iconType="trash" label="" href={`vehicle/${subscription.id}/cancel`}/></td>

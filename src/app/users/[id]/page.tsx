@@ -2,14 +2,18 @@ import { alegreya } from "@/app/ui/fonts";
 import SubscriptionList from "./subscription-list";
 import Button from "@/app/ui/button";
 import PurchaseHistory from "./purchase-history";
+import { fetchUser, fetchUserPurchases } from "@/app/lib/data";
+import { notFound } from "next/navigation";
 
-export default function Users() {
-  // TODO: Get user info from database
-  const user = { "id": "1", "name": "Alexander Alwardt", "email": "alexanderalwardt@gmail.com", "phone": "586-260-1300", "subscriptions": 1 };
-  // TODO: Get purchases from database
-  const typeMap = {
-    "single": "Single Car Wash",
-    "subscription": "Subscription Payment",
+export default async function User(props: { params: Promise<{ id: string }>}) {
+  const params = await props.params;
+  const id = params.id;
+  const user = await fetchUser(id);
+
+
+  // 404 if user could not be found matching ID
+  if (!user) {
+    notFound();
   }
 
   return (
@@ -28,7 +32,6 @@ export default function Users() {
             <div className="w-auto font-bold">Phone</div>
             <div>{user.phone}</div>
           </div>
-          {/* TODO: Edit user info button */}
           <Button iconType="edit" label="Edit User Info" href={`users/${user.id}/edit`}/>
         </div>
         {/* Vehicle Subscription Information */}
@@ -40,7 +43,7 @@ export default function Users() {
         {/* Purchase History */}
         <div className="p-4 border-darker-bg border-1 rounded-md">
           <h2 className={`${alegreya.className} text-xl col-span-2 mb-4`}>Purchase History</h2>
-          <PurchaseHistory userId={user.id} currentPage={1} />
+          <PurchaseHistory userId={user.id} />
         </div>
       </div>
     </main>
