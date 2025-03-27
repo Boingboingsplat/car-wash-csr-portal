@@ -21,6 +21,7 @@ export default function CreateSubscriptionForm({ user }: { user: User }) {
             id="make_model"
             name="make_model"
             placeholder="Enter a make and model"
+            required
             className="w-full rounded-md border border-lighter-bg p-2 placeholder:text-darker-bg"
           />
         </div>
@@ -33,6 +34,7 @@ export default function CreateSubscriptionForm({ user }: { user: User }) {
             id="license"
             name="license"
             placeholder="Enter a license plate number"
+            required
             className="w-full rounded-md border border-lighter-bg p-2 placeholder:text-darker-bg"
           />
         </div>

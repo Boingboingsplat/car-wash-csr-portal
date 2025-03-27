@@ -22,6 +22,7 @@ export default function EditUserForm({ user }: { user: User }) {
             name="name"
             placeholder="Enter a name"
             defaultValue={user.name}
+            required
             className="w-full rounded-md border border-lighter-bg p-2 placeholder:text-darker-bg"
           />
         </div>
@@ -35,6 +36,7 @@ export default function EditUserForm({ user }: { user: User }) {
             name="email"
             placeholder="Enter an email address"
             defaultValue={user.email}
+            required
             className="w-full rounded-md border border-lighter-bg p-2 placeholder:text-darker-bg"
           />
         </div>
@@ -48,6 +50,7 @@ export default function EditUserForm({ user }: { user: User }) {
             name="phone"
             placeholder="Enter a phone number"
             defaultValue={user.phone}
+            required
             className="w-full rounded-md border border-lighter-bg p-2 placeholder:text-darker-bg"
           />
         </div>

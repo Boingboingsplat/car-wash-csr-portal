@@ -22,6 +22,7 @@ export default function EditSubscriptionForm({ subscription }: { subscription: S
             name="make_model"
             placeholder="Enter a make and model"
             defaultValue={subscription.make_model}
+            required
             className="w-full rounded-md border border-lighter-bg p-2 placeholder:text-darker-bg"
           />
         </div>
@@ -35,6 +36,7 @@ export default function EditSubscriptionForm({ subscription }: { subscription: S
             name="license"
             placeholder="Enter a license plate number"
             defaultValue={subscription.license}
+            required
             className="w-full rounded-md border border-lighter-bg p-2 placeholder:text-darker-bg"
           />
         </div>
