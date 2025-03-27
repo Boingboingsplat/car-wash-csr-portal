@@ -10,7 +10,7 @@ export default function EditSubscriptionForm({ subscription }: { subscription: S
   return (
     <form
       action={editSubscriptionWithId}
-      className="min-w-[500px]"
+      className="md:min-w-[500px]"
     >
         {/* Make / Model */}
         <div className="mb-4">

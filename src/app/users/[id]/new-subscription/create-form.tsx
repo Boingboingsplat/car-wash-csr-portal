@@ -10,7 +10,7 @@ export default function CreateSubscriptionForm({ user }: { user: User }) {
   return (
     <form
       action={createSubscriptionWithId}
-      className="min-w-[500px]"
+      className="md:min-w-[500px]"
     >
         {/* Make / Model */}
         <div className="mb-4">

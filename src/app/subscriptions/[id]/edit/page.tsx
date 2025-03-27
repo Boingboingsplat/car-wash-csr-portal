@@ -15,7 +15,7 @@ export default async function editUser(props: { params: Promise<{ id: string }> 
   }
 
   return (
-    <main className="mx-auto w-max">
+    <main className="md:mx-auto md:w-max">
       <Breadcrumbs 
         breadcrumbs={[
           { label: 'Users', href: '/users' },

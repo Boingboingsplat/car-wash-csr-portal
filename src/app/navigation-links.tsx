@@ -30,7 +30,7 @@ export default function NavigationLinks() {
             key={link.name}
             href={link.href}
             className={clsx(
-              `flex h-12 p-2 ml-5 gap-3 items-center rounded-tl-md rounded-tr-md rounded-bl-none md:rounded-tr-none md:rounded-bl-md text-sm bg-lighter-bg hover:bg-content-bg hover:text-accent`,
+              `flex h-12 p-2 md:ml-5 gap-3 items-center self-end md:self-stretch rounded-tl-md rounded-tr-md rounded-bl-none md:rounded-tr-none md:rounded-bl-md text-sm bg-lighter-bg hover:bg-content-bg hover:text-accent`,
               {
                 "bg-white text-accent": pathname === link.href,
               }

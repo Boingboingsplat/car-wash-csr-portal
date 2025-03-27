@@ -14,12 +14,12 @@ export default async function addSubscription(props: { params: Promise<{ id: str
   }
 
   return (
-    <main className="mx-auto w-max">
-      <Breadcrumbs 
+    <main className="md:mx-auto md:w-max">
+      <Breadcrumbs
         breadcrumbs={[
           { label: 'Users', href: '/users' },
-          { label: user.name, href: `/users/${user.id}`},
-          { label: 'Edit User Info', href: `/users/${user.id}/edit`, active: true}
+          { label: user.name, href: `/users/${user.id}` },
+          { label: 'Edit User Info', href: `/users/${user.id}/edit`, active: true }
         ]}
       />
       <EditUserForm user={user} />

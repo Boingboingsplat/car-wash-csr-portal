@@ -11,7 +11,7 @@ export default async function Users(props: {
   const query = searchParams?.query || '';
   
   return (
-    <main className="mx-auto min-w-[500px] max-w-[50vw]">
+    <main className="w-full md:mx-auto md:max-w-[600px]">
       <Breadcrumbs 
         breadcrumbs={[
           { label: 'Users', href: '/users', active: true },

@@ -33,8 +33,8 @@ export default async function SubscriptionList({
           <th scope="col">Status</th>
           <th scope="col">Make / Model</th>
           <th scope="col">License Plate</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>

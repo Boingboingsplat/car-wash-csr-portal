@@ -14,7 +14,7 @@ export default function Breadcrumbs({
   breadcrumbs: Breadcrumb[];
 }) {
   return (
-    <ol className={clsx(alegreya.className, 'flex text-xl md:text-2xl mb-6')}>
+    <ol className={`${alegreya.className} flex flex-wrap text-xl md:text-2xl mb-6`}>
       {breadcrumbs.map((breadcrumb, index) => (
         <li
           key={breadcrumb.href}

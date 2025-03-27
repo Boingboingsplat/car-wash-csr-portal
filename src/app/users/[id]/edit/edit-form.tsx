@@ -10,7 +10,7 @@ export default function EditUserForm({ user }: { user: User }) {
   return (
     <form
       action={editUserWithId}
-      className="min-w-[500px]"
+      className="md:min-w-[500px]"
     >
         {/* User name */}
         <div className="mb-4">
@@ -50,7 +50,7 @@ export default function EditUserForm({ user }: { user: User }) {
             name="phone"
             placeholder="Enter a phone number"
             defaultValue={user.phone}
-            required
+            
             className="w-full rounded-md border border-lighter-bg p-2 placeholder:text-darker-bg"
           />
         </div>
