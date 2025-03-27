@@ -15,7 +15,7 @@ export default function RootLayout({
       <body className={`${nunitoSans.className} antialiased`}>
         <div className="flex h-screen flex-col md:flex-row overflow-hidden">
           {/* Sidebar */}
-          <div className="self-start flex w-full h-20 flex-row md:w-64 md:h-full md:flex-col gap-2 bg-darker-bg">
+          <div className="self-start flex w-full h-20 flex-row md:w-50 md:h-full md:flex-col gap-2 bg-darker-bg">
             {/* Portal Logo */}
             <Link
               className="p-3 pb-8 md:mb-6 bg-accent slanted-right-80 md:slanted-bottom-80"

@@ -15,7 +15,9 @@ export type UsersTable = {
 
 export type Subscription = {
   id: string,
-  status: 'active' | 'overdue',
+  user_id: string,
+  name: string,
+  status: 'active' | 'pending' | 'overdue',
   make_model: string,
   license: string,
 }

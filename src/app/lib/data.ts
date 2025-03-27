@@ -1,6 +1,5 @@
 import postgres from 'postgres';
 import { LatestPurchasesTable, Purchase, Subscription, User, UsersTable } from './definitions';
-import { format } from 'path';
 import { formatCurrency, formatDate } from './utils';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
@@ -68,6 +67,30 @@ export async function fetchUser(user_id: string) {
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch user.')
+  }
+}
+
+export async function fetchSubscription(subscription_id: string) {
+  try {
+    const subscriptions = await sql<Subscription[]>`
+      SELECT 
+        subscriptions.id,
+        subscriptions.user_id,
+        users.name,
+        subscriptions.status,
+        subscriptions.make_model,
+        subscriptions.license
+      FROM 
+        subscriptions
+      JOIN users ON subscriptions.user_id = users.id
+      WHERE
+        subscriptions.id = ${`${subscription_id}`}
+    `;
+
+    return subscriptions[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch subscription.')
   }
 }
 

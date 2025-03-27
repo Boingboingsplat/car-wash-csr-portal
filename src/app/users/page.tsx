@@ -1,6 +1,6 @@
-import { alegreya } from "@/app/ui/fonts";
 import Search from "@/app/users/search";
 import UserList from "@/app/users/user-list";
+import Breadcrumbs from "../ui/breadcrumbs";
 
 export default async function Users(props: {
   searchParams?: Promise<{
@@ -11,8 +11,12 @@ export default async function Users(props: {
   const query = searchParams?.query || '';
   
   return (
-    <main className="mx-auto max-w-[50vw]">
-      <h1 className={`${alegreya.className} text-2xl mb-8`}>Users</h1>
+    <main className="mx-auto min-w-[500px] max-w-[50vw]">
+      <Breadcrumbs 
+        breadcrumbs={[
+          { label: 'Users', href: '/users', active: true },
+        ]}
+      />
       <Search placeholder="Search users" />
       <UserList query={query} />
     </main>

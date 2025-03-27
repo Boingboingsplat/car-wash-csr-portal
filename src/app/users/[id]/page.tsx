@@ -2,14 +2,14 @@ import { alegreya } from "@/app/ui/fonts";
 import SubscriptionList from "./subscription-list";
 import Button from "@/app/ui/button";
 import PurchaseHistory from "./purchase-history";
-import { fetchUser, fetchUserPurchases } from "@/app/lib/data";
+import { fetchUser } from "@/app/lib/data";
 import { notFound } from "next/navigation";
+import Breadcrumbs from "@/app/ui/breadcrumbs";
 
 export default async function User(props: { params: Promise<{ id: string }>}) {
   const params = await props.params;
   const id = params.id;
   const user = await fetchUser(id);
-
 
   // 404 if user could not be found matching ID
   if (!user) {
@@ -19,7 +19,13 @@ export default async function User(props: { params: Promise<{ id: string }>}) {
   return (
     <main className="w-full">
       {/* Header */}
-      <h1 className={`${alegreya.className} text-2xl mb-8`}>Users / {user.name}</h1>
+      <Breadcrumbs 
+        breadcrumbs={[
+          { label: 'Users', href: '/users' },
+          { label: user.name, href: `/users/${user.id}`, active: true },
+        ]}
+      />
+      {/* <h1 className={`${alegreya.className} text-2xl mb-8`}>Users / {user.name}</h1> */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
         {/* User Information */}
         <div className="p-4 border-darker-bg border-1 rounded-md">
@@ -32,13 +38,13 @@ export default async function User(props: { params: Promise<{ id: string }>}) {
             <div className="w-auto font-bold">Phone</div>
             <div>{user.phone}</div>
           </div>
-          <Button iconType="edit" label="Edit User Info" href={`users/${user.id}/edit`}/>
+          <Button iconType="edit" label="Edit User Info" href={`${user.id}/edit`}/>
         </div>
         {/* Vehicle Subscription Information */}
         <div className="p-4 border-darker-bg border-1 rounded-md">
           <h2 className={`${alegreya.className} text-xl col-span-2 mb-4`}>Vehicle Subscriptions</h2>
           <SubscriptionList userId={user.id} />
-          <Button iconType="plus" label="New Subscription" href={`users/${user.id}/add-vehicle`}/>
+          <Button iconType="plus" label="New Subscription" href={`${user.id}/new-subscription`}/>
         </div>
         {/* Purchase History */}
         <div className="p-4 border-darker-bg border-1 rounded-md">
